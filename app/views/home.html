@@ -1,0 +1,27 @@
+<div ng-init="getHomes()">
+    <a class="btn btn-primary" href="#/home/add">Add home</a>
+    <table class="mytable">
+        <thead>
+            <th>Id</th>
+            <th>Address</th>
+            <th>Number of rooms</th>
+            <th>Size</th>
+            <th>Heaters</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="h in homes">
+                <td>{{h.id}}</td>
+                <td>{{h.address}}</td>
+                <td>{{h.nbRooms}}</td>
+                <td>{{h.size}}</td>
+                <td>heaters
+                    <ul>
+                        <li ng-repeat="heater in h.heaters">
+                            {{heater.consumption}}
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

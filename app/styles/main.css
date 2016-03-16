@@ -81,3 +81,15 @@ body {
     border-bottom: 0;
   }
 }
+
+
+.mytable {
+    text-align: center;
+    vertical-align: middle;
+    cellpadding: 10px;
+    margin: 20px;
+}
+.mytable th, .mytable td {
+     border: 1px solid black;
+     padding: 10px;
+}
