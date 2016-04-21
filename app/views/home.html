@@ -1,4 +1,4 @@
-<div ng-init="getHomes()">
+<div>
     <a class="btn btn-primary" href="#/home/add">Add home</a>
     <table class="mytable">
         <thead>
@@ -7,6 +7,8 @@
             <th>Number of rooms</th>
             <th>Size</th>
             <th>Heaters</th>
+            <th>Inhabitant</th>
+            <th>delete</th>
         </thead>
         <tbody>
             <tr ng-repeat="h in homes">
@@ -14,13 +16,15 @@
                 <td>{{h.address}}</td>
                 <td>{{h.nbRooms}}</td>
                 <td>{{h.size}}</td>
-                <td>heaters
+                <td>
                     <ul>
                         <li ng-repeat="heater in h.heaters">
                             {{heater.consumption}}
                         </li>
                     </ul>
                 </td>
+                <td>{{h.inhabitant}}</td>
+                <td><input type="button" ng-click="delete(h.id)" value="x"></input></td>
             </tr>
         </tbody>
     </table>

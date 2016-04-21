@@ -1,3 +1,10 @@
+/* jshint
+laxcomma:true
+, laxbreak:true
+, unused : false
+, loopfunc: true
+*/
+
 'use strict';
 
 /**
@@ -8,19 +15,24 @@
 * Controller of the tp6App
 */
 angular.module('tp6App')
-.controller('HomeCtrl', function ($scope,$http) {
-    $scope.getHomes = function(){
+.controller('HomeCtrl', function ($scope, $http, $route) {
+    $http({
+        method: 'GET',
+        url: '/rest/home'
+    }).then(function(response) {
+        _.map(response.data, function(h){
+            if(!_.isArray(h.heaters)){
+                h.heaters = [].concat(h.heaters);
+            }
+        });
+        $scope.homes = response.data;
+    });
+    $scope.delete = function(id){
         $http({
-            method: 'GET',
-            url: '/rest/home'
+            method: 'DELETE',
+            url: '/rest/home/delete/' + id
         }).then(function(response) {
-            console.log(response.data);
-            _.map(response.data, function(h){
-                if(!_.isArray(h.heaters)){
-                    h.heaters = [].concat(h.heaters);
-                }
-            });
-            $scope.homes = response.data;
+            $route.reload();
         });
     };
 });

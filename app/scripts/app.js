@@ -22,14 +22,9 @@ angular
 .config(function ($routeProvider) {
     $routeProvider
     .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
+        templateUrl: 'views/home.html',
+        controller: 'HomeCtrl',
         controllerAs: 'main'
-    })
-    .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
     })
     .when('/home', {
         templateUrl: 'views/home.html',
@@ -41,7 +36,12 @@ angular
       controller: 'AddhomeCtrl',
       controllerAs: 'addhome'
     })
+    .when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl',
+        controllerAs: 'about'
+    })
     .otherwise({
-        redirectTo: '/'
+        redirectTo: '/home'
     });
 });
